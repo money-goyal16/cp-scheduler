@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CP Scheduler - Competitive Programming Contest Scheduler</title>
+  <link rel="stylesheet" href="./styles/style.css" />
+  <link rel="stylesheet" href="./styles/calendar.css" />
+  <link rel="stylesheet" href="./styles/contests.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&display=swap"
+    rel="stylesheet">
+  <script>
+    const theme = localStorage.getItem('cp-scheduler-theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', theme);
+  </script>
+</head>
+
+<body>
+  <div id="app">
+    <div class="bg-grid"></div>
+
+    <header>
+      <div class="container">
+        <div class="logo">
+          <span class="logo-bracket">{</span>
+          <span class="logo-text">CP Scheduler</span>
+          <span class="logo-bracket">}</span>
+        </div>
+        <nav class="nav-links">
+          <a href="index.html" class="active">Contests</a>
+          <a href="hackathons.html">Hackathons & Events</a>
+        </nav>
+        <div class="theme-toggle">
+          <button id="theme-toggle-btn" aria-label="Toggle dark/light mode">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="light-icon">
+              <path
+                d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z">
+              </path>
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="dark-icon">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div class="container">
+
+        <section class="hero-section">
+          <div class="hero-content">
+            <div class="hero-tag">Competitive Programming</div>
+            <h1 class="hero-title">Never miss a<br><span class="accent">contest again.</span></h1>
+            <p class="hero-sub">Track LeetCode, Codeforces, & CodeChef — all in one place.</p>
+          </div>
+        </section>
+
+        <section class="next-contest-section">
+          <div class="section-label">⚡ Up Next</div>
+          <div id="next-contest" class="next-contest">
+            <div class="loading">Finding next contest...</div>
+          </div>
+        </section>
+
+        <section class="upcoming-section">
+          <div class="section-header">
+            <div class="section-label">🗓 Upcoming Contests</div>
+            <div class="platform-filter" id="platform-filter">
+              <button class="pf-btn active" data-platform="all">All</button>
+              <button class="pf-btn leetcode" data-platform="leetcode">LeetCode</button>
+              <button class="pf-btn codeforces" data-platform="codeforces">Codeforces</button>
+              <button class="pf-btn codechef" data-platform="codechef">CodeChef</button>
+            </div>
+          </div>
+          <div class="upcoming-contests" id="upcoming-contests">
+            <div class="loading">Loading contest data...</div>
+          </div>
+        </section>
+
+        <section class="weekly-schedule-section">
+          <div class="section-label">📅 Weekly Schedule</div>
+          <div class="weekly-schedule">
+            <div class="schedule-day">
+              <div class="day-header">
+                <span class="day-name">Sunday</span>
+                <span class="day-badge">1 contest</span>
+              </div>
+              <div class="schedule-events">
+                <div class="schedule-event leetcode">
+                  <span class="event-dot"></span>
+                  <div class="event-info">
+                    <span class="time">8:00 AM IST</span>
+                    <span class="name">LeetCode Weekly Contest</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="schedule-day">
+              <div class="day-header">
+                <span class="day-name">Wednesday</span>
+                <span class="day-badge">1 contest</span>
+              </div>
+              <div class="schedule-events">
+                <div class="schedule-event codechef">
+                  <span class="event-dot"></span>
+                  <div class="event-info">
+                    <span class="time">8:00 – 10:00 PM IST</span>
+                    <span class="name">CodeChef Starters / Long Challenge</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="schedule-day">
+              <div class="day-header">
+                <span class="day-name">Saturday</span>
+                <span class="day-badge">1 contest</span>
+              </div>
+              <div class="schedule-events">
+                <div class="schedule-event leetcode">
+                  <span class="event-dot"></span>
+                  <div class="event-info">
+                    <span class="time">8:00 PM IST</span>
+                    <span class="name">LeetCode Biweekly (Alternate Saturdays)</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="schedule-day">
+              <div class="day-header">
+                <span class="day-name">Varies</span>
+                <span class="day-badge">dynamic</span>
+              </div>
+              <div class="schedule-events">
+                <div class="schedule-event codeforces">
+                  <span class="event-dot"></span>
+                  <div class="event-info">
+                    <span class="time">Varies (check calendar)</span>
+                    <span class="name">Codeforces Round (Div. 1/2/3/4)</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="calendar-section">
+          <div class="section-label">📆 Contest Calendar</div>
+          <div class="calendar-controls">
+            <button id="prev-month" class="calendar-nav-btn">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="15 18 9 12 15 6"></polyline>
+              </svg>
+            </button>
+            <h3 id="current-month">April 2026</h3>
+            <button id="next-month" class="calendar-nav-btn">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </button>
+          </div>
+          <div class="calendar" id="calendar"></div>
+          <div class="calendar-legend">
+            <span class="legend-item leetcode"><span class="legend-dot"></span>LeetCode</span>
+            <span class="legend-item codeforces"><span class="legend-dot"></span>Codeforces</span>
+            <span class="legend-item codechef"><span class="legend-dot"></span>CodeChef</span>
+          </div>
+        </section>
+
+        <section class="platforms-section">
+          <div class="section-label">🏆 Platform Breakdown</div>
+          <div class="platforms">
+            <div class="platform-card leetcode">
+              <div class="platform-header">
+                <div class="platform-icon lc-icon">LC</div>
+                <h3>LeetCode</h3>
+              </div>
+              <p>Weekly: Every Sunday at 8:00 AM IST</p>
+              <p>Biweekly: Alternate Saturdays at 8:00 PM IST</p>
+              <div class="platform-contests" id="leetcode-contests"></div>
+              <a href="https://leetcode.com/contest/" target="_blank" class="platform-link">View all →</a>
+            </div>
+            <div class="platform-card codechef">
+              <div class="platform-header">
+                <div class="platform-icon cc-icon">CC</div>
+                <h3>CodeChef</h3>
+              </div>
+              <p>Starters: Every Wednesday 8:00 – 10:00 PM IST</p>
+              <div class="platform-contests" id="codechef-contests"></div>
+              <a href="https://www.codechef.com/contests" target="_blank" class="platform-link">View all →</a>
+            </div>
+
+            <div class="platform-card codeforces">
+              <div class="platform-header">
+                <div class="platform-icon cf-icon">CF</div>
+                <h3>Codeforces</h3>
+              </div>
+              <p>Schedule varies — Div. 1, 2, 3, 4 &amp; Educational rounds</p>
+              <div class="platform-contests" id="codeforces-contests"></div>
+              <a href="https://codeforces.com/contests" target="_blank" class="platform-link">View all →</a>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </main>
+
+    <footer>
+      <div class="container">
+        <div class="footer-inner">
+          <div class="footer-logo">
+            <span class="logo-bracket">{</span>CP Scheduler<span class="logo-bracket">}</span>
+          </div>
+          <p>Your Competitive Programming Contest Scheduler</p>
+          <div class="footer-links">
+            <a href="index.html">Contests</a>
+            <a href="hackathons.html">Hackathons</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script type="module" src="./js/main.js"></script>
+</body>
+
+</html>
