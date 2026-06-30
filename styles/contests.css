@@ -1,0 +1,633 @@
+/* ===========================
+   contests.css
+   =========================== */
+
+/* ---- Next Contest ---- */
+.next-contest {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: border-color var(--transition);
+}
+
+.next-contest-inner {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 24px;
+  padding: 28px 32px;
+}
+
+.next-contest-inner:hover {
+  border-color: var(--accent);
+}
+
+.next-platform-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 4px 10px;
+  border-radius: 100px;
+  margin-bottom: 10px;
+}
+
+.next-contest-name {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.next-contest-meta {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.next-meta-item {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.countdown-block {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px 24px;
+  text-align: center;
+  min-width: 180px;
+}
+
+.countdown-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: 10px;
+}
+
+.countdown-display {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+}
+
+.cd-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.cd-num {
+  font-family: var(--font-mono);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--accent-bright);
+  line-height: 1;
+  min-width: 36px;
+  text-align: center;
+}
+
+.cd-lbl {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.cd-sep {
+  font-family: var(--font-mono);
+  font-size: 1.2rem;
+  color: var(--text-muted);
+  margin-top: -6px;
+}
+
+.next-contest-link {
+  display: inline-block;
+  margin-top: 14px;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--accent);
+  text-decoration: none;
+  border: 1px solid var(--accent);
+  padding: 6px 14px;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition);
+}
+
+.next-contest-link:hover {
+  background: var(--accent);
+  color: white;
+}
+
+/* ---- Platform filter ---- */
+.platform-filter {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.pf-btn {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  padding: 5px 12px;
+  border-radius: 100px;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.pf-btn:hover {
+  border-color: var(--border-light);
+  color: var(--text-primary);
+}
+
+.pf-btn.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: white;
+}
+
+.pf-btn.leetcode.active {
+  background: var(--lc);
+  border-color: var(--lc);
+}
+
+.pf-btn.codeforces.active {
+  background: var(--cf);
+  border-color: var(--cf);
+}
+
+.pf-btn.codechef.active {
+  background: var(--cc-accent);
+  border-color: var(--cc-accent);
+}
+
+/* .pf-btn.gfg.active { background: var(--gfg); border-color: var(--gfg); } */
+
+/* ---- Upcoming contests grid ---- */
+.upcoming-contests {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 16px;
+}
+
+.contest-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  transition: all var(--transition);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  animation: fadeUp 0.4s ease both;
+}
+
+.contest-card:hover {
+  border-color: var(--border-light);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
+
+.contest-card.leetcode:hover {
+  border-color: var(--lc);
+  box-shadow: 0 4px 20px var(--lc-bg);
+}
+
+.contest-card.codeforces:hover {
+  border-color: var(--cf);
+  box-shadow: 0 4px 20px var(--cf-bg);
+}
+
+.contest-card.codechef:hover {
+  border-color: var(--cc-accent);
+  box-shadow: 0 4px 20px var(--cc-bg);
+}
+
+/* .contest-card.gfg:hover       { border-color: var(--gfg); box-shadow: 0 4px 20px var(--gfg-bg); } */
+
+.card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.platform-pill {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 3px 8px;
+  border-radius: 100px;
+  flex-shrink: 0;
+}
+
+.leetcode .platform-pill {
+  background: var(--lc-bg);
+  color: var(--lc);
+  border: 1px solid var(--lc);
+}
+
+.codeforces .platform-pill {
+  background: var(--cf-bg);
+  color: var(--cf);
+  border: 1px solid var(--cf);
+}
+
+.codechef .platform-pill {
+  background: var(--cc-bg);
+  color: var(--cc-accent);
+  border: 1px solid var(--cc-accent);
+}
+
+/* .gfg       .platform-pill { background: var(--gfg-bg); color: var(--gfg); border: 1px solid var(--gfg); } */
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 6px;
+}
+
+.status-dot.live {
+  background: var(--green);
+  animation: pulse 1.5s infinite;
+}
+
+.status-dot.soon {
+  background: var(--yellow);
+}
+
+.status-dot.upcoming {
+  background: var(--text-muted);
+}
+
+.contest-name {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.3;
+}
+
+.contest-info {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.contest-info-row {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  color: var(--text-secondary);
+}
+
+.contest-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  padding-top: 10px;
+  border-top: 1px solid var(--border);
+}
+
+.card-duration {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+.card-link {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--accent);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+.card-link:hover {
+  color: var(--accent-bright);
+}
+
+/* ---- Weekly schedule ---- */
+.weekly-schedule {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+.schedule-day {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  transition: border-color var(--transition);
+}
+
+.schedule-day:hover {
+  border-color: var(--border-light);
+}
+
+.day-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.day-name {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+}
+
+.day-badge {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  padding: 2px 8px;
+  border-radius: 100px;
+}
+
+.schedule-events {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.schedule-event {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: var(--radius-sm);
+  background: var(--bg);
+  border-left: 3px solid var(--border);
+}
+
+.schedule-event.leetcode {
+  border-left-color: var(--lc);
+}
+
+.schedule-event.codeforces {
+  border-left-color: var(--cf);
+}
+
+.schedule-event.codechef {
+  border-left-color: var(--cc-accent);
+}
+
+/* .schedule-event.gfg        { border-left-color: var(--gfg); } */
+
+.event-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  margin-top: 5px;
+  flex-shrink: 0;
+  background: var(--text-muted);
+}
+
+.schedule-event.leetcode .event-dot {
+  background: var(--lc);
+}
+
+.schedule-event.codeforces .event-dot {
+  background: var(--cf);
+}
+
+.schedule-event.codechef .event-dot {
+  background: var(--cc-accent);
+}
+
+/* .schedule-event.gfg        .event-dot { background: var(--gfg); } */
+
+.event-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.schedule-event .time {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+
+.schedule-event .name {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  line-height: 1.3;
+}
+
+/* ---- Platform breakdown ---- */
+.platforms {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.platform-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: all var(--transition);
+}
+
+.platform-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
+
+.platform-card.leetcode:hover {
+  border-color: var(--lc);
+}
+
+.platform-card.codeforces:hover {
+  border-color: var(--cf);
+}
+
+.platform-card.codechef:hover {
+  border-color: var(--cc-accent);
+}
+
+/* .platform-card.gfg:hover        { border-color: var(--gfg); } */
+
+.platform-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 4px;
+}
+
+.platform-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.lc-icon {
+  background: var(--lc-bg);
+  color: var(--lc);
+  border: 1px solid var(--lc);
+}
+
+.cf-icon {
+  background: var(--cf-bg);
+  color: var(--cf);
+  border: 1px solid var(--cf);
+}
+
+.cc-icon {
+  background: var(--cc-bg);
+  color: var(--cc-accent);
+  border: 1px solid var(--cc-accent);
+}
+
+.gfg-icon {
+  background: var(--gfg-bg);
+  color: var(--gfg);
+  border: 1px solid var(--gfg);
+}
+
+.platform-card h3 {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.platform-card p {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.platform-contests {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.mini-contest-item {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  padding: 6px 10px;
+  background: var(--bg);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.platform-link {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--accent);
+  text-decoration: none;
+  margin-top: auto;
+  padding-top: 10px;
+  border-top: 1px solid var(--border);
+  transition: color var(--transition);
+}
+
+.platform-link:hover {
+  color: var(--accent-bright);
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 1024px) {
+  .upcoming-contests {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
+
+  .weekly-schedule {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .next-contest-inner {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 24px;
+  }
+
+  .countdown-block {
+    min-width: unset;
+  }
+
+  .platforms {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 680px) {
+  .upcoming-contests {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .platforms {
+    grid-template-columns: 1fr;
+  }
+
+  .weekly-schedule {
+    grid-template-columns: 1fr;
+  }
+
+  .next-contest-name {
+    font-size: 1.2rem;
+  }
+
+  .next-contest-inner {
+    padding: 20px 16px;
+  }
+
+  .countdown-block {
+    padding: 16px;
+  }
+
+  .platform-filter {
+    justify-content: flex-start;
+  }
+}
+
+.platform-card gfg {
+  display: none;
+}
