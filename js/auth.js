@@ -4,7 +4,7 @@
 // ===========================
 
 // CHANGE THIS to your deployed backend URL once hosted (e.g. Render/Railway link)
-const API_BASE = 'http://localhost:5000/api';
+const API_BASE = 'https://contest-tracker-backend-yir4.onrender.com/api';
 
 const TOKEN_KEY = 'cp-scheduler-token';
 const USER_KEY = 'cp-scheduler-user';
